@@ -34,31 +34,34 @@
     NSString *productURL = [NSString stringWithFormat:@"http://127.0.0.1:5000/api/inventory/%@", self.productName];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfig.HTTPAdditionalHeaders = @{
+                                            @"product"       : self.productName,
+                                            @"Content-Type"  : @"application/json"
+                                            };
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     
+    NSMutableURLRequest *URLRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:productURL]];
+    URLRequest.HTTPMethod = @"DELETE";
+    
     //create task
-    NSURLSessionDownloadTask *deleteProduct = [session downloadTaskWithURL:[NSURL URLWithString:productURL] completionHandler:^(NSURL *location,
-                                                                                                                               NSURLResponse *response,
-                                                                                                                               NSError *error) {
-        NSHTTPURLResponse *httpResp =
-        (NSHTTPURLResponse *) response;
-        if (httpResp.statusCode == 200) {
-            NSError *jsonError;
-            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:location] options:NSJSONReadingAllowFragments error:&jsonError];
-            
-            if (!jsonError) {
-                NSLog(@"%@", jsonDict);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    //update UI
-                    self.productQuantityLabel.text = @"0";
-                    
-                    
-                    // need delegate to [self.productTableView reloadData];
-                });
-            }
-        }
+    NSURLSessionDataTask *deleteProduct = [session dataTaskWithRequest:URLRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
+                NSHTTPURLResponse *httpResp =
+                (NSHTTPURLResponse *) response;
+                if (httpResp.statusCode == 200) {
+                    NSError *jsonError;
+                    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+        
+                    if (!jsonError) {
+                        NSLog(@"%@", jsonDict);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+        
+                            //update UI
+                            self.productQuantityLabel.text = @"0";
+
+                        });
+                    }
+                }
     }];
     
     //resume
