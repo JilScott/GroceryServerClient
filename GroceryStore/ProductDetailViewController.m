@@ -53,6 +53,7 @@
                     //update UI
                     self.productQuantityLabel.text = @"0";
                     
+                    
                     // need delegate to [self.productTableView reloadData];
                 });
             }
