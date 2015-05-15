@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0a8-jO-RgY">
-                                <rect key="frame" x="99" y="269" width="122" height="30"/>
+                                <rect key="frame" x="99" y="234" width="122" height="30"/>
                                 <state key="normal" title="Remove All Stock">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -85,12 +85,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-Of-0dt">
-                                <rect key="frame" x="137" y="425" width="51" height="30"/>
-                                <state key="normal" title="Update">
+                                <rect key="frame" x="16" y="442" width="87" height="30"/>
+                                <state key="normal" title="Restock ( + )">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="updateQuantity:" destination="u9w-SF-KjX" eventType="touchUpInside" id="Ily-cd-STy"/>
+                                    <action selector="restockProduct:" destination="u9w-SF-KjX" eventType="touchUpInside" id="TLS-rh-hUk"/>
                                 </connections>
                             </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="cUh-BQ-mU5">
@@ -117,6 +117,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount to +/- :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6s-xA-TG2">
+                                <rect key="frame" x="83" y="290" width="158" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSl-LJ-n7Q">
+                                <rect key="frame" x="212" y="442" width="92" height="30"/>
+                                <state key="normal" title="Purchase ( - )">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="purchaseProduct:" destination="u9w-SF-KjX" eventType="touchUpInside" id="GHh-jo-ykE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -125,6 +140,7 @@
                         <outlet property="productQuantityLabel" destination="29w-If-aFm" id="yXs-Jo-bWx"/>
                         <outlet property="productTitleLabel" destination="7gk-3d-leK" id="o3s-cx-OZT"/>
                         <outlet property="quantityAdjustmentLabel" destination="Fwc-v1-POf" id="0SP-VR-JSw"/>
+                        <outlet property="stepperOutlet" destination="cUh-BQ-mU5" id="bqy-wa-0wS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaK-rD-I6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
