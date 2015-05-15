@@ -24,13 +24,12 @@
 @implementation InventoryViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    //    self.productTableView.dataSource = self;
-    //    self.productTableView.delegate = self;
     
     [self populateProductArray];
 }
 
 - (ProductTableViewCell *)tableView:(ProductTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     ProductTableViewCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"productCell" forIndexPath:indexPath];
     
     Product *product = [self.productArray objectAtIndex:indexPath.row];
@@ -41,7 +40,7 @@
     return productCell;
 }
 
-- (NSInteger)tableView:(ProductTableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(ProductTableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.productArray.count;
 }
 
