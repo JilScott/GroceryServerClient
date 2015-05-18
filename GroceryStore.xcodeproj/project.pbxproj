@@ -17,7 +17,6 @@
 		8E056E6D1B03DD0D00C519E8 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E6C1B03DD0D00C519E8 /* ProductDetailViewController.m */; };
 		8E056E701B03DFBA00C519E8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E6F1B03DFBA00C519E8 /* Product.m */; };
 		8E056E731B03E1E100C519E8 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E721B03E1E100C519E8 /* ProductTableViewCell.m */; };
-		9733BD4E1E88550360E4FFE9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D80BB70C5767DB574F5D3D8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		8E056E6F1B03DFBA00C519E8 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		8E056E711B03E1E100C519E8 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		8E056E721B03E1E100C519E8 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
-		9D80BB70C5767DB574F5D3D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9733BD4E1E88550360E4FFE9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +74,6 @@
 		74527FB6DB374F0B3BC577F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9D80BB70C5767DB574F5D3D8 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,11 +161,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E056E621B03D94900C519E8 /* Build configuration list for PBXNativeTarget "GroceryStore" */;
 			buildPhases = (
-				D5EB64DD1230F5084D1C640C /* Check Pods Manifest.lock */,
 				8E056E3B1B03D94900C519E8 /* Sources */,
 				8E056E3C1B03D94900C519E8 /* Frameworks */,
 				8E056E3D1B03D94900C519E8 /* Resources */,
-				B410B764A35863472B4EFE87 /* Copy Pods Resources */,
 				OBJCLEANCUSTOMRUNSCRIPTT /* Objective-Clean Run Script */,
 			);
 			buildRules = (
@@ -257,36 +251,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B410B764A35863472B4EFE87 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5EB64DD1230F5084D1C640C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		OBJCLEANCUSTOMRUNSCRIPTT /* Objective-Clean Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
