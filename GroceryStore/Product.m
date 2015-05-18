@@ -15,19 +15,21 @@
 @property (strong, nonatomic) NSString *quantity;
 
 @end
+
 @implementation Product
 
 - (id)initWithProductName:(NSString *)productName andQuantity:(NSNumber *)quantity
 {
     self = [super init];
     if (self) {
-        self.productName = productName;
-        self.quantity = [NSString stringWithFormat:@"%@", quantity];
+        _productName = productName;
+        _quantity = [NSString stringWithFormat:@"%@", quantity];
     }
     return self;
 }
 
-+ (NSArray *)createInventoryFromResponseDict:(NSDictionary *)jsonDict {
++ (NSArray *)createInventoryFromResponseDict:(NSDictionary *)jsonDict
+{
     
     NSMutableArray *inventory = [NSMutableArray new];
     
@@ -39,4 +41,5 @@
     
     return inventory;
 }
+
 @end

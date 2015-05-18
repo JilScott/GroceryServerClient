@@ -17,7 +17,7 @@
 		8E056E6D1B03DD0D00C519E8 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E6C1B03DD0D00C519E8 /* ProductDetailViewController.m */; };
 		8E056E701B03DFBA00C519E8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E6F1B03DFBA00C519E8 /* Product.m */; };
 		8E056E731B03E1E100C519E8 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E721B03E1E100C519E8 /* ProductTableViewCell.m */; };
-		8E056E761B03E53100C519E8 /* ProductTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E056E751B03E53100C519E8 /* ProductTableView.m */; };
+		9733BD4E1E88550360E4FFE9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D80BB70C5767DB574F5D3D8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008292946044D30A34870CF9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7F95F8A38F7648C7755E8749 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8E056E3F1B03D94900C519E8 /* GroceryStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E056E431B03D94900C519E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E056E441B03D94900C519E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,8 +52,7 @@
 		8E056E6F1B03DFBA00C519E8 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		8E056E711B03E1E100C519E8 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		8E056E721B03E1E100C519E8 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
-		8E056E741B03E53100C519E8 /* ProductTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableView.h; sourceTree = "<group>"; };
-		8E056E751B03E53100C519E8 /* ProductTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableView.m; sourceTree = "<group>"; };
+		9D80BB70C5767DB574F5D3D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9733BD4E1E88550360E4FFE9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +74,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74527FB6DB374F0B3BC577F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D80BB70C5767DB574F5D3D8 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E056E361B03D94900C519E8 = {
 			isa = PBXGroup;
 			children = (
 				8E056E411B03D94900C519E8 /* GroceryStore */,
 				8E056E5B1B03D94900C519E8 /* GroceryStoreTests */,
 				8E056E401B03D94900C519E8 /* Products */,
+				AEFCF0386186589C42C8C4AC /* Pods */,
+				74527FB6DB374F0B3BC577F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +110,6 @@
 				8E056E4C1B03D94900C519E8 /* Main.storyboard */,
 				8E056E681B03DCF700C519E8 /* InventoryViewController.h */,
 				8E056E691B03DCF700C519E8 /* InventoryViewController.m */,
-				8E056E741B03E53100C519E8 /* ProductTableView.h */,
-				8E056E751B03E53100C519E8 /* ProductTableView.m */,
 				8E056E711B03E1E100C519E8 /* ProductTableViewCell.h */,
 				8E056E721B03E1E100C519E8 /* ProductTableViewCell.m */,
 				8E056E6E1B03DFBA00C519E8 /* Product.h */,
@@ -139,6 +149,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AEFCF0386186589C42C8C4AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F95F8A38F7648C7755E8749 /* Pods.debug.xcconfig */,
+				008292946044D30A34870CF9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E056E621B03D94900C519E8 /* Build configuration list for PBXNativeTarget "GroceryStore" */;
 			buildPhases = (
+				D5EB64DD1230F5084D1C640C /* Check Pods Manifest.lock */,
 				8E056E3B1B03D94900C519E8 /* Sources */,
 				8E056E3C1B03D94900C519E8 /* Frameworks */,
 				8E056E3D1B03D94900C519E8 /* Resources */,
+				B410B764A35863472B4EFE87 /* Copy Pods Resources */,
+				OBJCLEANCUSTOMRUNSCRIPTT /* Objective-Clean Run Script */,
 			);
 			buildRules = (
 			);
@@ -234,6 +256,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B410B764A35863472B4EFE87 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5EB64DD1230F5084D1C640C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		OBJCLEANCUSTOMRUNSCRIPTT /* Objective-Clean Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Objective-Clean Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "if [[ -z ${SKIP_OBJCLEAN} || ${SKIP_OBJCLEAN} != 1 ]]; then\nif [[ -d \"${LOCAL_APPS_DIR}/Objective-Clean.app\" ]]; then \n\"${LOCAL_APPS_DIR}\"/Objective-Clean.app/Contents/Resources/ObjClean.app/Contents/MacOS/ObjClean \"${SRCROOT}\"?!Lib \nelse\necho \"warning: You have to install and set up Objective-Clean to use its features!\" \nfi\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E056E3B1B03D94900C519E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -241,7 +310,6 @@
 			files = (
 				8E056E481B03D94900C519E8 /* AppDelegate.m in Sources */,
 				8E056E701B03DFBA00C519E8 /* Product.m in Sources */,
-				8E056E761B03E53100C519E8 /* ProductTableView.m in Sources */,
 				8E056E451B03D94900C519E8 /* main.m in Sources */,
 				8E056E731B03E1E100C519E8 /* ProductTableViewCell.m in Sources */,
 				8E056E6A1B03DCF700C519E8 /* InventoryViewController.m in Sources */,
@@ -371,6 +439,7 @@
 		};
 		8E056E631B03D94900C519E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F95F8A38F7648C7755E8749 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GroceryStore/Info.plist;
@@ -381,6 +450,7 @@
 		};
 		8E056E641B03D94900C519E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 008292946044D30A34870CF9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GroceryStore/Info.plist;
@@ -442,6 +512,7 @@
 				8E056E641B03D94900C519E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E056E651B03D94900C519E8 /* Build configuration list for PBXNativeTarget "GroceryStoreTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +521,7 @@
 				8E056E671B03D94900C519E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

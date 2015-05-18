@@ -13,7 +13,7 @@
 @property (strong, nonatomic, readonly) NSString *productName;
 @property (strong, nonatomic, readonly) NSString *quantity;
 
-- (id)initWithProductName:(NSString *)productName andQuantity:(NSString *)quantity;
+- (instancetype)initWithProductName:(NSString *)productName andQuantity:(NSString *)quantity;
 + (NSArray *)createInventoryFromResponseDict:(NSDictionary *)jsonDict;
 
 @end

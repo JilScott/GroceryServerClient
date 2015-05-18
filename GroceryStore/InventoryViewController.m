@@ -9,30 +9,30 @@
 #import "InventoryViewController.h"
 #import "Product.h"
 #import "ProductTableViewCell.h"
-#import "ProductTableView.h"
 
 #import "ProductDetailViewController.h"
 
 @interface InventoryViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *productArray;
-@property (weak, nonatomic) IBOutlet ProductTableView *productTableView;
-
+@property (weak, nonatomic) IBOutlet UITableView *productTableView;
 
 @end
 
 @implementation InventoryViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self populateProductArray];
 }
 
-- (ProductTableViewCell *)tableView:(ProductTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (ProductTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    ProductTableViewCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"productCell" forIndexPath:indexPath];
+    ProductTableViewCell *productCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProductTableViewCell class]) forIndexPath:indexPath];
     
-    Product *product = [self.productArray objectAtIndex:indexPath.row];
+    Product *product = self.productArray[indexPath.row];
     
     productCell.productTitleLabel.text = product.productName;
     productCell.productQuantityLabel.text = product.quantity;
@@ -40,13 +40,13 @@
     return productCell;
 }
 
-- (NSInteger)tableView:(ProductTableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.productArray.count;
 }
 
-- (void)populateProductArray {
-    self.productArray = [NSArray new];
-    
+- (void)populateProductArray
+{
     //create session
     NSString *inventoryURL = @"http://127.0.0.1:5000/api/inventory";
     
@@ -54,41 +54,37 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
 
     //create task
-    NSURLSessionDownloadTask *getProduct = [session downloadTaskWithURL:[NSURL URLWithString:inventoryURL] completionHandler:^(NSURL *location,
-                                                                                                                               NSURLResponse *response,
-                                                                                                                               NSError *error) {
-        NSHTTPURLResponse *httpResp =
+    NSURLSessionDataTask *getProduct = [session dataTaskWithURL:[NSURL URLWithString:inventoryURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse =
         (NSHTTPURLResponse *) response;
-        if (httpResp.statusCode == 200) {
+        if (httpResponse.statusCode == 200) {
             NSError *jsonError;
-            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:location] options:NSJSONReadingAllowFragments error:&jsonError];
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
             
-            if (!jsonError) {
-                NSLog(@"%@", jsonDict);
+            if (jsonDict) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.productArray = [Product createInventoryFromResponseDict:jsonDict];
-                    [self.productTableView reloadData];
-                });
+                    [self.productTableView reloadData];                });
             }
         }
         
     }];
-    
+
     //resume
     [getProduct resume];
     
-    //handle data --> json & error
-    
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"productDetail"]) {
         
-        Product *selectedProduct = [self.productArray objectAtIndex:self.productTableView.indexPathForSelectedRow.row];
+        Product *selectedProduct = self.productArray[self.productTableView.indexPathForSelectedRow.row];
         
         ProductDetailViewController *productDetailVC = [segue destinationViewController];
         productDetailVC.productName = selectedProduct.productName;
         productDetailVC.quantity = selectedProduct.quantity;
     }
 }
+
 @end
