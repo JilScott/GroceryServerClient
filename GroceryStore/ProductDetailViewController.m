@@ -86,15 +86,11 @@
 
 - (void)createURLRequestWithHTTPMethod:(NSString *)method
 {
-    
     //URL request
     self.URLRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.URLString]];
     self.URLRequest.HTTPMethod = method;
     [self.URLRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-}
-
-- (void)implementProductAdjustment
-{
+    
     //specify amount to add
     NSDictionary *quantityDict = @{@"quantity" : @(self.stepperOutlet.value)};
     
@@ -102,20 +98,16 @@
                               dataWithJSONObject:quantityDict
                               options:NSJSONWritingPrettyPrinted
                               error:nil];
-    
-    //create task
-    NSURLSessionUploadTask *restock = [self.session
-                                       uploadTaskWithRequest:self.URLRequest
-                                       fromData:quantityToPass
-                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
+    [self.URLRequest setHTTPBody:quantityToPass];
+}
+
+- (void)implementProductAdjustment
+{
+    NSURLSessionDataTask *restock = [self.session
+                                     dataTaskWithRequest:self.URLRequest
+                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     [self createAndHandleURLResponse:response withData:data];
-    }];
-//    NSURLSessionDataTask *restock = [self.session
-//                                     dataTaskWithRequest:self.URLRequest
-//                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        [self createAndHandleURLResponse:response withData:data];
-//                                     }];
+                                     }];
     [restock resume];
 }
 
