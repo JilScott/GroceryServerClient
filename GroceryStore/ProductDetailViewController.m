@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailViewController.h"
+#import "Constants.h"
 
 @interface ProductDetailViewController ()
 
@@ -27,15 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.productTitleLabel.text = self.productName;
-    self.productQuantityLabel.text = [NSString stringWithFormat:@"Current quantity is: %@", self.quantity];
+    self.productTitleLabel.text = NSLocalizedString(self.productName, nil);
+    self.productQuantityLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Current quantity is: %@", nil), self.quantity];
 }
 
 - (IBAction)stepped:(UIStepper *)sender
 {
-    
-    self.quantityAdjustmentLabel.text = [NSString stringWithFormat:@"%.0f", sender.value];
-    
+    self.quantityAdjustmentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%.0f", nil), sender.value];
 }
 
 - (IBAction)removeAllStock:(id)sender
@@ -43,7 +42,7 @@
     
     //create session
     [self createSessionWithURLComponent:@"inventory"];
-    [self createURLRequestWithHTTPMethod:@"DELETE"];
+    [self createURLRequestWithHTTPMethod:delete];
     
     //create task
     NSURLSessionDataTask *deleteProduct = [self.session dataTaskWithRequest:self.URLRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -59,7 +58,7 @@
 { //add
     //TODO? Can't stock product not currently/previously in inventory (201)
     [self createSessionWithURLComponent:@"inventory"];
-    [self createURLRequestWithHTTPMethod:@"POST"];
+    [self createURLRequestWithHTTPMethod:post];
     [self implementProductAdjustment];
     
 }
@@ -68,20 +67,18 @@
 { //subtract
     
     [self createSessionWithURLComponent:@"purchase"];
-    [self createURLRequestWithHTTPMethod:@"POST"];
+    [self createURLRequestWithHTTPMethod:post];
     [self implementProductAdjustment];
 }
 
 - (void)createSessionWithURLComponent:(NSString *)URLComponent
 {
-    
     //create session
-    self.URLString = [NSString stringWithFormat:@"http://127.0.0.1:5000/api/%@/%@", URLComponent, self.productName];
+    self.URLString = [NSString stringWithFormat:@"%@/%@/%@", baseURL, URLComponent, self.productName];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     self.session = [NSURLSession sessionWithConfiguration:sessionConfig];
-    
 }
 
 - (void)createURLRequestWithHTTPMethod:(NSString *)method
@@ -130,7 +127,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 //update UI
-                self.productQuantityLabel.text = [NSString stringWithFormat:@"Current quantity is: %@", jsonDict[self.productName]];
+                self.productQuantityLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Current quantity is: %@", nil), jsonDict[self.productName]];
                 
             });
         }

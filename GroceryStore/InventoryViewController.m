@@ -9,6 +9,7 @@
 #import "InventoryViewController.h"
 #import "Product.h"
 #import "ProductTableViewCell.h"
+#import "Constants.h"
 
 #import "ProductDetailViewController.h"
 
@@ -48,7 +49,7 @@
 - (void)populateProductArray
 {
     //create session
-    NSString *inventoryURL = @"http://127.0.0.1:5000/api/inventory";
+    NSString *inventoryURL = [NSString stringWithFormat:@"%@/%@", baseURL, inventory];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
